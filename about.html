@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>About PlotTwyst</title>
-<link rel="stylesheet" href="style.css">
+
+<title>PlotTwyst – Social Murder Mystery Game</title>
+
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
-<div class="hero">
-<h1>About PlotTwyst</h1>
-<p>A new way to play murder mystery games online.</p>
+<nav>
+
+<div class="logo">🕵️ PlotTwyst</div>
+
+<div class="menu">
+
+<a href="about.html">About</a>
+<a href="how-to-play.html">How to Play</a>
+<a href="contact.html">Contact</a>
+
 </div>
 
-<div class="container section">
+</nav>
 
-<div class="card">
-<h3>The Idea</h3>
+
+<section class="hero">
+
+<h1>
+A Social Deduction Murder Mystery Game
+</h1>
+
 <p>
-PlotTwyst was built to combine social deduction, logical reasoning,
-and multiplayer storytelling.
+Analyze clues. Debate suspects. Uncover the killer.
 </p>
-</div>
 
-<br>
+<form id="signup-form">
 
-<div class="card">
-<h3>The Engine</h3>
-<p>
-Each mystery is generated dynamically with suspects,
-motives, hidden relationships, and clues that must be
-logically triangulated to find the killer.
-</p>
-</div>
+<input
+type="email"
+placeholder="Enter your email to join the beta"
+required
+id="email"
+/>
 
-<br>
+<button type="submit">
 
-<div class="card">
-<h3>The Goal</h3>
-<p>
-Create the most engaging murder mystery experience
-for Discord communities.
-</p>
-</div>
+Join Beta
 
-</div>
+</button>
 
-</body>
-</html>
+</form>
+
+<p id="signup-status"></p>
+
+</section>
