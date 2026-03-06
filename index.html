@@ -2,86 +2,199 @@
 <html>
 
 <head>
-<title>PlotTwyst</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PlotTwyst | Social Deduction Murder Mystery</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<nav>
 
-<nav class="navbar">
 <div class="logo">🕵️ PlotTwyst</div>
 
-<div class="nav-links">
+<div class="menu">
+
 <a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="how-to-play.html">How To Play</a>
+<a href="how-to-play.html">How to Play</a>
+<a href="contact.html">Contact</a>
+
 </div>
+
 </nav>
 
 
-<!-- HERO -->
+<section class="hero">
 
-<div class="hero">
+<h1>Solve the Murder Before Time Runs Out</h1>
 
-<h1>Uncover The Killer</h1>
+<p>
+A multiplayer social deduction mystery game on Discord.
+Analyze clues. Debate suspects. Find the killer.
+</p>
 
-<p>A social deduction murder mystery played on Discord</p>
+<form id="signup-form">
 
-<a class="button" href="#">Play on Discord</a>
+<input
+type="email"
+id="email"
+placeholder="Enter your email to join the beta"
+required
+/>
 
-</div>
+<button type="submit">
+Join Beta
+</button>
+
+</form>
+
+<p id="signup-status"></p>
+
+</section>
 
 
-<!-- FEATURES -->
+<section class="features">
 
-<div class="container section">
-
-<h2>How PlotTwyst Works</h2>
+<h2>Why PlotTwyst is Different</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>🧩 AI Generated Mystery</h3>
-<p>Each game creates a new murder with suspects, motives and hidden truths.</p>
+
+<h3>🧩 Procedural Mysteries</h3>
+
+<p>
+Every game generates a completely new murder case with suspects, motives and twists.
+</p>
+
 </div>
 
+
 <div class="card">
+
 <h3>🕵️ Social Deduction</h3>
-<p>Discuss clues, challenge alibis and eliminate innocent suspects.</p>
+
+<p>
+Debate suspects with friends and eliminate the innocent.
+</p>
+
 </div>
+
 
 <div class="card">
-<h3>🎭 Plot Twists</h3>
-<p>Every game contains unexpected twists that change the investigation.</p>
-</div>
+
+<h3>🔍 Logical Clues</h3>
+
+<p>
+New clues emerge every round that reveal hidden truths about the crime.
+</p>
 
 </div>
 
 </div>
 
+</section>
 
-<!-- HOW TO PLAY CTA -->
 
-<div class="container section">
+<section class="steps">
 
-<h2>Ready To Solve Your First Mystery?</h2>
+<h2>How the Game Works</h2>
 
-<p>Learn the rules and start playing in minutes.</p>
+<div class="grid">
 
-<a class="button" href="how-to-play.html">Learn How To Play</a>
+<div class="step">
+
+<div class="number">1</div>
+
+<h3>Start a Game</h3>
+
+<p>Create a mystery case in your Discord server.</p>
 
 </div>
 
 
-<!-- FOOTER -->
+<div class="step">
+
+<div class="number">2</div>
+
+<h3>Analyze Suspects</h3>
+
+<p>Each suspect has motives, traits, and alibis.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">3</div>
+
+<h3>Debate & Vote</h3>
+
+<p>Eliminate suspects you believe are innocent.</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">4</div>
+
+<h3>Final Guess</h3>
+
+<p>Guess the murderer before the game ends.</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<h2>Join the Beta</h2>
+
+<p>Be the first to play PlotTwyst when it launches.</p>
+
+<form id="signup-form-2">
+
+<input
+type="email"
+placeholder="Enter your email"
+required
+/>
+
+<button type="submit">
+Get Early Access
+</button>
+
+</form>
+
+</section>
+
 
 <footer>
 
 <p>© 2026 PlotTwyst</p>
 
+<div class="footer-links">
+
+<a href="about.html">About</a>
+<a href="how-to-play.html">How to Play</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
 </footer>
+
+
+<script src="signup.js"></script>
 
 </body>
 
