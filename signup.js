@@ -9,7 +9,7 @@ form.addEventListener("submit", async (e) => {
   try {
 
     const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbyrwky0s3PgFGkdXompqR_b4lI7d2Bnl7rWPaoJRQTFyvD18LSQR7j5Jgunb943Z6I/exec",
+      "https://script.google.com/macros/s/AKfycbzEBB-zKBRPyli3-v3PemLfQcyR11Dr8I5FEd5yr5uy93SxsVGGHw37jEPUy77xexI/exec",
       {
         method: "POST",
         body: new URLSearchParams({
