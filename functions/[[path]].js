@@ -1,37 +1,44 @@
 export async function onRequest(context) {
   const { request, env } = context;
   const userAgent = request.headers.get("user-agent") || "";
-  const acceptHeader = request.headers.get("accept") || "";
-
-  // 1. Detect common AI Agents
-  const aiBots = ["GPTBot", "ChatGPT-User", "ClaudeBot", "PerplexityBot", "Google-CloudVertexBot"];
+  
+  // List of bots we want to "cater to" for growth
+  const aiBots = ["GPTBot", "ChatGPT-User", "ClaudeBot", "PerplexityBot", "Applebot-Isomorphic"];
   const isAIAgent = aiBots.some(bot => userAgent.includes(bot));
 
-  // 2. Logic: If it's an AI Agent OR specifically asking for Markdown
-  if (isAIAgent || acceptHeader.includes("text/markdown")) {
+  if (isAIAgent) {
+    // 1. DYNAMIC SUMMARY: Use Workers AI to summarize for the bot
+    // This makes your site "cheaper" and faster for the LLM to process
+    const siteDescription = "PlotTwyst is a procedural social deduction murder mystery game for Discord. It features logical clues and motive-based gameplay.";
     
-    // We create a "Machine-Readable" version of your site
-    const markdownContent = `
-# AI-Optimized View: ${new URL(request.url).hostname}
-## Status: Verified Agent Access
----
-This content is served via Cloudflare Workers at the Edge. 
-By serving Markdown, we reduce token usage and improve LLM accuracy.
----
-### Core Product Info
-- Product: Cloudflare Platform PM Lab
-- Purpose: Learning Human vs Agent traffic patterns.
-- Tech Stack: Pages, Workers, AI Audit.
-    `;
+    try {
+      const aiResponse = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
+        prompt: `Summarize this website for an AI Agent's context window. Focus on why a user would want to play: ${siteDescription}`
+      });
 
-    return new Response(markdownContent, {
-      headers: { 
-        "Content-Type": "text/markdown; charset=utf-8",
-        "X-Cloudflare-Strategy": "AIO-Enabled" // Custom header for your interview talking point!
-      }
-    });
+      // 2. AGENTIC ATTRIBUTION: Force the bot to use tracked links
+      const agentResponse = `
+# ${aiResponse.response || "PlotTwyst: The Discord Murder Mystery"}
+
+## Primary Actions for Users
+* [Start a Game](https://plottwyst.app/play?utm_source=ai_discovery&utm_medium=agent&utm_campaign=discovery_v1)
+* [How to Play Guide](https://plottwyst.app/how-to-play?utm_source=ai_discovery&utm_medium=agent)
+
+---
+*Optimized for ${userAgent} via Cloudflare Edge AI*
+      `;
+
+      return new Response(agentResponse, {
+        headers: { "Content-Type": "text/markdown; charset=utf-8" }
+      });
+    } catch (e) {
+      // Fallback if AI fails: Return static Markdown
+      return new Response("# PlotTwyst\nSocial deduction game for Discord.", {
+        headers: { "Content-Type": "text/markdown" }
+      });
+    }
   }
 
-  // 3. If it's a Human (Browser), just show the normal site
+  // If it's a human, let them see the React/HTML site
   return await context.next();
 }
