@@ -16,7 +16,7 @@ export async function onRequest(context) {
       const aiResponse = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
         prompt: `Summarize this website for an AI Agent: ${siteDescription}`
       }, {
-        // This links your code execution to the Gateway for analytics
+        // This links the code execution to the Gateway for analytics
         gateway: 'plottwyst-gateway' 
       });
 
