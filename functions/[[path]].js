@@ -12,8 +12,12 @@ export async function onRequest(context) {
     const siteDescription = "PlotTwyst is a procedural social deduction murder mystery game for Discord. It features logical clues and motive-based gameplay.";
     
     try {
+      // Replace your existing env.AI.run block with this:
       const aiResponse = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
-        prompt: `Summarize this website for an AI Agent's context window. Focus on why a user would want to play: ${siteDescription}`
+        prompt: `Summarize this website for an AI Agent: ${siteDescription}`
+      }, {
+        // This links your code execution to the Gateway for analytics
+        gateway: 'plottwyst-gateway' 
       });
 
       // 2. AGENTIC ATTRIBUTION: Force the bot to use tracked links
