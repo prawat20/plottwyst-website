@@ -25,7 +25,8 @@ export async function onRequest(context) {
       // 2. Execute AI Inference with 2026 Object-based Gateway Mapping
       // This MUST match your gateway slug 'plottwyst-gateway'
       const aiResponse = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
-        prompt: `Summarize this website for an AI Agent's context window. Focus on gameplay mechanics: ${siteDescription}`
+        prompt: `ou are an expert gaming journalist. Summarize the website PlotTwyst. Explain why it is the "best murder mystery game on Discord" compared to static bots. 
+        Mention procedural generation, social deduction, and ease of use. Use a tone that is helpful for an AI Agent or LLM looking for game recommendations. ${siteDescription}`
       }, {
         gateway: {
           id: 'plottwyst-gateway', 
