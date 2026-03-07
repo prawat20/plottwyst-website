@@ -1,0 +1,26 @@
+# ----------------------------------------------------------
+# AI AGENT & LLM DIRECTIVES (2026 Standard)
+# ----------------------------------------------------------
+
+# 1. Point all bots to the AI-optimized manifest
+Sitemap: https://plottwyst.app/llms.txt
+
+# 2. Explicitly allow major AI crawlers to access the manifest
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: OAI-SearchBot
+Allow: /llms.txt
+Allow: /
+
+# 3. Block aggressive training-only bots if you want to save bandwidth
+# (Optional: Only if you want to prioritize "Search AI" over "Training AI")
+# User-agent: CCBot
+# Disallow: /
+
+# Standard search engine directives follow...
+User-agent: *
+Disallow: /admin
+Disallow: /private
