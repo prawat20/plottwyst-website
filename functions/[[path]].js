@@ -1,39 +1,54 @@
 export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
+  const ua = request.headers.get("User-Agent") || "";
   const acceptHeader = request.headers.get("Accept") || "";
-  const userAgent = request.headers.get("User-Agent") || "";
 
-  // 1. The Industry Standard: Check for Markdown Accept Header
-  const prefersMarkdown = acceptHeader.includes("text/markdown");
+  // 1. Logic to identify AI Agents
+  const isAgent = /GPTBot|ChatGPT|ClaudeBot|PerplexityBot/i.test(ua) || acceptHeader.includes("text/markdown");
 
-  // 2. The Heuristic Fallback: Detect known AI Agents (GPTBot, etc.)
-  const isKnownAIBot = /GPTBot|ChatGPT|ClaudeBot|PerplexityBot|Google-InspectionTool/i.test(userAgent);
-
-  if (prefersMarkdown || isKnownAIBot) {
+  if (isAgent) {
     // Construct the path to your .md file
-    // Assumes your MD files are named after your routes (e.g., /about -> /about.md)
-    const mdPath = url.pathname.endsWith('/') 
-      ? `${url.origin}${url.pathname}index.md` 
+    const mdUrl = url.pathname.endsWith('/') 
+      ? `${url.origin}/index.md` 
       : `${url.origin}${url.pathname}.md`;
 
+    /** * REPLACE THESE TWO VARIABLES 
+     * You can find these in your Cloudflare Dashboard
+     **/
+    const ACCOUNT_ID = "382a99bcec982715cdfe6fb23e5a95c3"; 
+    const GATEWAY_SLUG = "plottwyst-gateway";
+
+    // This is the Universal Proxy endpoint for AI Gateway
+    const gatewayEndpoint = `https://gateway.ai.cloudflare.com/v1/${ACCOUNT_ID}/${GATEWAY_SLUG}/proxy-req`;
+
     try {
-      const response = await fetch(mdPath);
-      
+      // We route the request through the Gateway
+      const response = await fetch(gatewayEndpoint, {
+        method: "GET",
+        headers: {
+          "cf-gateway-url": mdUrl, // The destination URL for the gateway to fetch
+          "X-Agent-Type": "Markdown-Handshake",
+          "Accept": "text/markdown"
+        }
+      });
+
       if (response.ok) {
-        return new Response(await response.body, {
+        const body = await response.text();
+        return new Response(body, {
           headers: { 
             "Content-Type": "text/markdown; charset=utf-8",
-            "X-Agent-Route": prefersMarkdown ? "Header-Match" : "UA-Match",
-            "Vary": "Accept, User-Agent" // Crucial for Cloudflare Edge Caching
-          },
+            "Vary": "Accept, User-Agent",
+            "X-Logged-Via": "AI-Gateway"
+          }
         });
       }
     } catch (e) {
-      console.error("Markdown delivery failed, falling back to HTML");
+      // Fail gracefully: if the gateway or .md fetch fails, serve the standard HTML
+      console.error("Gateway logging failed:", e);
     }
   }
 
-  // 3. Human/Default Path: Serve the standard Cloudflare Pages HTML
+  // Fallback for humans or if the above logic is bypassed
   return next();
 }
