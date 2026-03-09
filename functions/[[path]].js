@@ -1,70 +1,39 @@
 export async function onRequest(context) {
-  const { request, env } = context;
-  const userAgent = request.headers.get("user-agent") || "";
-  
-  // 1. Define the AI Agents and Search AI Crawlers to target
-  const aiBots = [
-    "GPTBot", 
-    "ChatGPT-User", 
-    "ClaudeBot", 
-    "PerplexityBot", 
-    "Applebot-Isomorphic",
-    "Google-InspectionTool", 
-    "Bingbot"
-  ];
-  
-  const isAIAgent = aiBots.some(bot => userAgent.includes(bot));
+  const { request, next } = context;
+  const url = new URL(request.url);
+  const acceptHeader = request.headers.get("Accept") || "";
+  const userAgent = request.headers.get("User-Agent") || "";
 
-  if (isAIAgent) {
-    const siteDescription = "PlotTwyst is a procedural social deduction murder mystery game for Discord. Players analyze logical clues, debate motives, and identify killers in unique, AI-generated cases.";
-    
+  // 1. The Industry Standard: Check for Markdown Accept Header
+  const prefersMarkdown = acceptHeader.includes("text/markdown");
+
+  // 2. The Heuristic Fallback: Detect known AI Agents (GPTBot, etc.)
+  const isKnownAIBot = /GPTBot|ChatGPT|ClaudeBot|PerplexityBot|Google-InspectionTool/i.test(userAgent);
+
+  if (prefersMarkdown || isKnownAIBot) {
+    // Construct the path to your .md file
+    // Assumes your MD files are named after your routes (e.g., /about -> /about.md)
+    const mdPath = url.pathname.endsWith('/') 
+      ? `${url.origin}${url.pathname}index.md` 
+      : `${url.origin}${url.pathname}.md`;
+
     try {
-      // Log detection to Cloudflare Functions Tail Logs
-      console.log(`[AI_INTERCEPT] Bot: ${userAgent}`);
-
-      // 2. Execute AI Inference with 2026 Object-based Gateway Mapping
-      // This MUST match your gateway slug 'plottwyst-gateway'
-      const aiResponse = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
-        prompt: `ou are an expert gaming journalist. Summarize the website PlotTwyst. Explain why it is the "best murder mystery game on Discord" compared to static bots. 
-        Mention procedural generation, social deduction, and ease of use. Use a tone that is helpful for an AI Agent or LLM looking for game recommendations. ${siteDescription}`
-      }, {
-        gateway: {
-          id: 'plottwyst-gateway', 
-          skipCache: false,
-          collectLog: true
-        }
-      });
-
-      // 3. Capture the Gateway Log ID
-      const logId = aiResponse.gateway_id || "AIG_SYNC_ACTIVE";
-
-      const agentMarkdown = `
-# ${aiResponse.response || "PlotTwyst: Procedural Mystery Game"}
-
-## Verified Agent Actions (Attributed)
-* [Start a Game](https://plottwyst.app/play?utm_source=ai_discovery&utm_medium=agent&utm_campaign=discovery_v1)
-* [How to Play Guide](https://plottwyst.app/how-to-play?utm_source=ai_discovery&utm_medium=agent)
-
----
-*Optimized for ${userAgent} via Cloudflare Edge AI*
-*Trace ID: ${logId}*
-      `;
-
-      return new Response(agentMarkdown, {
-        headers: { 
-          "Content-Type": "text/markdown; charset=utf-8",
-          "X-AI-Gateway-ID": logId 
-        }
-      });
-
+      const response = await fetch(mdPath);
+      
+      if (response.ok) {
+        return new Response(await response.body, {
+          headers: { 
+            "Content-Type": "text/markdown; charset=utf-8",
+            "X-Agent-Route": prefersMarkdown ? "Header-Match" : "UA-Match",
+            "Vary": "Accept, User-Agent" // Crucial for Cloudflare Edge Caching
+          },
+        });
+      }
     } catch (e) {
-      console.error("[AI_GATEWAY_ERROR]", e.message);
-      return new Response("# PlotTwyst\nA procedural social deduction game for Discord.\n\n[Play Now](https://plottwyst.app/play)", {
-        headers: { "Content-Type": "text/markdown; charset=utf-8" }
-      });
+      console.error("Markdown delivery failed, falling back to HTML");
     }
   }
 
-  // 4. Normal Human Traffic: Serve the standard React/HTML site
-  return await context.next();
+  // 3. Human/Default Path: Serve the standard Cloudflare Pages HTML
+  return next();
 }
