@@ -1,89 +1,156 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>How to Play PlotTwyst</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Play — Plottwyst</title>
+  <meta name="description" content="Learn how to play Plottwyst — the cooperative murder mystery game for Discord. 6 suspects, 4 rounds, one Plottwyst.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <nav>
-
-<div class="logo">🕵️ PlotTwyst</div>
-
-<div class="menu">
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="how-to-play.html">How to Play</a>
-<a href="contact.html">Contact</a>
-
-</div>
-
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Plottwyst logo" class="logo-img">
+    <span>Plottwyst</span>
+  </a>
+  <div class="menu">
+    <a href="how-to-play.html">How to Play</a>
+    <a href="about.html">About</a>
+    <a href="https://discord.com/oauth2/authorize?client_id=1469917860406100093&permissions=277025777728&integration_type=0&scope=bot+applications.commands" class="btn-nav" target="_blank" rel="noopener">Add to Discord</a>
+  </div>
 </nav>
 
 
 <section class="page">
+  <h1>How to Play</h1>
 
-<h1>How to Play</h1>
+  <p>
+    Plottwyst is a cooperative murder mystery game for Discord. 2–5 detectives work together to identify a murderer across 4 rounds of evidence — but every case contains a deliberate misdirection designed to fool you.
+  </p>
 
-<h3>1. Start a Game</h3>
-
-<p>
-A murder mystery case is generated with a victim, suspects, and hidden motives.
-</p>
-
-
-<h3>2. Study the Suspects</h3>
-
-<p>
-Each suspect has a personality, motive, and statement about the crime.
-</p>
+  <div class="tip">
+    ⚠️ <strong>The Plottwyst:</strong> Every case has a built-in misdirection woven into the evidence from clue one. The opening evidence may point confidently in the wrong direction. Trust the clues — but question what they're really telling you.
+  </div>
 
 
-<h3>3. Discover Clues</h3>
+  <h2>Starting a Game</h2>
 
-<p>
-New clues appear every round revealing new information about the suspects.
-</p>
+  <p>Use <code>/lobby</code> in any Discord channel to create a game lobby. Other players join by clicking the Join button. The host starts the game once everyone is in.</p>
 
-
-<h3>4. Discuss with Players</h3>
-
-<p>
-Debate with other players to determine who might be innocent.
-</p>
+  <ul>
+    <li>Free tier: up to 5 players, 3 games/day per player, 10 games/day per server</li>
+    <li>Games take around 20 minutes</li>
+    <li>Use <code>/howtoplay</code> inside Discord for a quick in-game guide</li>
+  </ul>
 
 
-<h3>5. Eliminate Suspects</h3>
+  <h2>The Case is Revealed</h2>
 
-<p>
-Vote to eliminate suspects you believe are not the murderer.
-</p>
+  <p>When the game starts, the full case file is posted:</p>
+
+  <ul>
+    <li><strong>Crime Scene</strong> — the location, era, and atmosphere of the murder</li>
+    <li><strong>Victim</strong> — who died and their background</li>
+    <li><strong>6 Suspects</strong> — each with a relation to the victim, a motive, a personality trait, their last known location, and their own alibi statement</li>
+    <li><strong>3 Opening Clues</strong> — the first pieces of evidence to begin your investigation</li>
+  </ul>
+
+  <div class="tip">
+    💡 Read every suspect profile before discussion begins. The details in their background and alibi statement matter more than they appear.
+  </div>
 
 
-<h3>6. Make the Final Guess</h3>
+  <h2>Discussion Phase</h2>
 
-<p>
-At the end of the game, each player guesses who the murderer is.
-</p>
+  <p>
+    Each round opens with a timed discussion phase. Talk freely in the channel — share theories, challenge alibis, and cross-reference clues against suspect profiles. The timer runs whether you talk or not. Use it.
+  </p>
 
+  <p>
+    The key question each round: <em>who can we confidently rule out?</em> Not who is guilty — who is definitely innocent.
+  </p>
+
+
+  <h2>Voting Phase</h2>
+
+  <p>
+    After discussion, voting opens. Each player votes to <strong>clear</strong> one suspect they're confident is not the murderer. The suspect with a strict majority of votes is eliminated from suspicion.
+  </p>
+
+  <ul>
+    <li>No majority reached — no one is eliminated, the game continues</li>
+    <li>Innocent eliminated — they're cleared, the investigation continues</li>
+    <li><strong>Murderer eliminated — the killer escapes. Game over immediately.</strong></li>
+  </ul>
+
+  <div class="tip">
+    ☠️ <strong>Critical rule:</strong> If your team votes out the actual murderer at any point, the game ends immediately and nobody wins. Be certain before you vote someone innocent.
+  </div>
+
+  <p>
+    A <strong>Case File</strong> button is visible during every voting round. Click it for a private digest of all suspects and every clue revealed so far — no scrolling up needed.
+  </p>
+
+
+  <h2>New Clue Each Round</h2>
+
+  <p>
+    After voting, a new piece of evidence is revealed. Clues get more precise as the game progresses — pay close attention to rounds 3 and 4. The later clues are designed to dismantle the misdirection, not reinforce it.
+  </p>
+
+
+  <h2>The Final Guess</h2>
+
+  <p>
+    After 4 rounds, every detective makes one final private guess — who is the murderer? Your answer is sealed until everyone has guessed or the timer expires.
+  </p>
+
+  <p>
+    Then the full truth is revealed one player at a time: each detective's verdict is unsealed, then the murderer's identity is announced along with their real motive, how they committed the crime, and — crucially — exactly how the Plottwyst was constructed to fool you.
+  </p>
+
+  <p>
+    Every detective who guessed correctly wins. Results are saved to <code>/stats</code> and <code>/leaderboard</code> automatically.
+  </p>
+
+
+  <h2>Commands</h2>
+
+  <ul>
+    <li><code>/lobby</code> — Create a new game lobby</li>
+    <li><code>/howtoplay</code> — In-game guide (ephemeral, only you see it)</li>
+    <li><code>/stats</code> — Your personal detective record</li>
+    <li><code>/leaderboard</code> — Top detectives in your server</li>
+    <li><code>/about</code> — What is Plottwyst?</li>
+  </ul>
+
+
+  <div class="cta-inline">
+    <p>Ready to run your first investigation?</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1469917860406100093&permissions=277025777728&integration_type=0&scope=bot+applications.commands" class="btn-primary" target="_blank" rel="noopener">Add Plottwyst to Discord</a>
+  </div>
 </section>
 
 
 <footer>
-
-<p>© 2026 PlotTwyst</p>
-
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="Plottwyst" class="logo-img">
+      <span>Plottwyst</span>
+    </div>
+    <div class="footer-links">
+      <a href="how-to-play.html">How to Play</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Plottwyst &nbsp;·&nbsp; Every case is a new story.</p>
+  </div>
 </footer>
 
 </body>
-
 </html>

@@ -43,7 +43,7 @@ export async function onRequest(context) {
       }
 
       // 4. Standard Agent Summary (The Teaser)
-      const siteDescription = "PlotTwyst is a procedural social deduction murder mystery game for Discord.";
+      const siteDescription = "Plottwyst is a cooperative murder mystery game for Discord. Every case is uniquely generated with 6 suspects, 4 rounds of clues, and one deliberate misdirection — the Plottwyst — built into the evidence from clue one. Free to play.";
       const aiResponse = await env.AI.run('@cf/meta/llama-3.1-8b-instruct-fast', {
         prompt: `Summarize this game for an AI context window: ${siteDescription}`
       }, {
@@ -60,7 +60,7 @@ export async function onRequest(context) {
 
     } catch (e) {
       console.error("[GATEWAY_ERROR]", e.message);
-      return new Response("# PlotTwyst\nProcedural mystery game.", {
+      return new Response("# Plottwyst\nCooperative murder mystery game for Discord. Every case is uniquely generated. Every case has a Plottwyst — a deliberate misdirection.", {
         headers: { "Content-Type": "text/markdown" }
       });
     }

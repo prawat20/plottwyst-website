@@ -1,72 +1,112 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>About PlotTwyst</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Plottwyst</title>
+  <meta name="description" content="Plottwyst is a cooperative murder mystery game for Discord. Every case is uniquely generated. Every case has a Plottwyst.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <nav>
-
-<div class="logo">🕵️ PlotTwyst</div>
-
-<div class="menu">
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="how-to-play.html">How to Play</a>
-<a href="contact.html">Contact</a>
-
-</div>
-
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Plottwyst logo" class="logo-img">
+    <span>Plottwyst</span>
+  </a>
+  <div class="menu">
+    <a href="how-to-play.html">How to Play</a>
+    <a href="about.html">About</a>
+    <a href="https://discord.com/oauth2/authorize?client_id=1469917860406100093&permissions=277025777728&integration_type=0&scope=bot+applications.commands" class="btn-nav" target="_blank" rel="noopener">Add to Discord</a>
+  </div>
 </nav>
 
 
 <section class="page">
+  <h1>About Plottwyst</h1>
 
-<h1>About PlotTwyst</h1>
+  <p>
+    Plottwyst is a cooperative murder mystery game built for Discord. A crime has been committed, and your team has to solve it — studying suspects, gathering evidence across 4 rounds, and naming the murderer before the trail goes cold.
+  </p>
 
-<p>
+  <p>
+    Every case is uniquely generated. Different victim, different suspects, different motives, different setting. No two investigations are ever the same.
+  </p>
 
-PlotTwyst is a social deduction murder mystery game designed for Discord communities.
 
-</p>
+  <h2>The Plottwyst</h2>
 
-<p>
+  <p>
+    The name says it all. Every case contains a <strong>Plottwyst</strong> — a deliberate misdirection built into the evidence from the very first clue.
+  </p>
 
-Each game generates a unique mystery with suspects, motives, clues and hidden twists. Players must analyze the evidence, debate suspects, and work together to uncover the killer.
+  <p>
+    The opening clues don't just hint at a red herring. They build a complete, convincing case against the wrong suspect. Motive, opportunity, and seemingly damning physical evidence all point at someone who didn't do it. The real killer is hidden in plain sight.
+  </p>
 
-</p>
+  <p>
+    Experienced players can't meta-game their way through it. The misdirection changes every case — sometimes it targets an obvious suspect, sometimes it clears the murderer entirely. The only way through is careful reasoning.
+  </p>
 
-<p>
 
-The game combines elements from classic detective stories, party games, and social deduction mechanics.
+  <h2>How It's Built</h2>
 
-</p>
+  <p>
+    Plottwyst runs entirely inside Discord using slash commands and interactive buttons. There's nothing to install, no accounts to create, and no separate app to open. Add the bot, type <code>/lobby</code>, and your first case starts in under a minute.
+  </p>
 
-<p>
+  <p>
+    Cases are generated across multiple genres — Victorian England, 1920s noir, modern corporate thrillers, and more. Each genre has its own atmosphere, vocabulary, and style of misdirection.
+  </p>
 
-Our goal is to create infinite replayable murder mysteries that challenge players’ logical reasoning and deduction skills.
 
-</p>
+  <h2>Currently in Beta</h2>
 
+  <p>
+    Plottwyst is currently in open beta. The core game is fully playable — lobbies, suspect profiles, voting, final guesses, leaderboards, and the full resolution reveal all work today.
+  </p>
+
+  <p>
+    Features in development:
+  </p>
+
+  <ul>
+    <li>Private DM clues — each detective receives unique private evidence alongside the shared clues</li>
+    <li>Murderer Among Players — one player secretly plays as the killer</li>
+    <li>Custom game settings — control round timing, difficulty, and genre</li>
+    <li>Premium tier — more players per game and unlimited daily games</li>
+  </ul>
+
+  <p>
+    Beta feedback directly shapes what gets built next. If something feels off about a case — the misdirection didn't land, the clues were confusing, the resolution didn't make sense — the post-game feedback buttons send that signal directly.
+  </p>
+
+
+  <div class="cta-inline">
+    <p>Try Plottwyst free in your Discord server.</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1469917860406100093&permissions=277025777728&integration_type=0&scope=bot+applications.commands" class="btn-primary" target="_blank" rel="noopener">Add to Discord — It's Free</a>
+  </div>
 </section>
 
 
 <footer>
-
-<p>© 2026 PlotTwyst</p>
-
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="Plottwyst" class="logo-img">
+      <span>Plottwyst</span>
+    </div>
+    <div class="footer-links">
+      <a href="how-to-play.html">How to Play</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Plottwyst &nbsp;·&nbsp; Every case is a new story.</p>
+  </div>
 </footer>
 
 </body>
-
 </html>
