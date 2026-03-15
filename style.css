@@ -48,6 +48,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  position: relative;
 }
 
 .logo {
@@ -92,6 +93,18 @@ nav {
 }
 
 .btn-nav:hover { background: var(--accent-hover) !important; }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  line-height: 1;
+}
 
 
 /* ── Buttons ────────────────────────────────────────────────────────────── */
@@ -140,6 +153,16 @@ nav {
   cursor: default;
 }
 
+
+/* ── Hero tagline ───────────────────────────────────────────────────────── */
+.hero-tagline {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
 
 /* ── Badge ──────────────────────────────────────────────────────────────── */
 .badge {
@@ -268,17 +291,19 @@ nav {
 .step:hover { border-color: rgba(255,255,255,0.2); }
 
 .step-number {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   background: var(--accent);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Playfair Display', serif;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 20px;
   margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .step h3 {
@@ -576,11 +601,43 @@ footer {
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  nav { padding: 14px 20px; }
+  nav {
+    padding: 14px 20px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
 
-  .menu a:not(.btn-nav) { display: none; }
+  .hamburger { display: block; }
 
-  .hero { padding: 72px 20px 60px; }
+  #nav-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 12px;
+  }
+
+  #nav-menu.open { display: flex; }
+
+  #nav-menu a:not(.btn-nav) {
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 16px;
+  }
+
+  #nav-menu .btn-nav {
+    margin-top: 12px;
+    text-align: center;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .hero { padding: 64px 20px 48px; }
 
   .what-is-inner {
     grid-template-columns: 1fr;
@@ -597,4 +654,7 @@ footer {
 
   .btn-primary,
   .btn-secondary { width: 100%; max-width: 320px; text-align: center; }
+
+  .pricing-card .btn-primary,
+  .pricing-card .btn-outline { max-width: 100%; }
 }

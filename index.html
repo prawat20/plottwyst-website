@@ -30,9 +30,11 @@
     <img src="logo.png" alt="Plottwyst logo" class="logo-img">
     <span>Plottwyst</span>
   </a>
-  <div class="menu">
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Toggle menu">☰</button>
+  <div class="menu" id="nav-menu">
     <a href="how-to-play.html">How to Play</a>
     <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
     <a href="/invite?source=nav" class="btn-nav" target="_blank" rel="noopener">Add to Discord</a>
   </div>
 </nav>
@@ -41,6 +43,7 @@
 <!-- ── Hero ─────────────────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="container">
+    <p class="hero-tagline">Murder Mystery Game for Discord</p>
     <div class="badge">🔴 Beta Now Live</div>
     <h1>A Murder Has Been<br>Committed.</h1>
     <p class="hero-sub">
@@ -197,5 +200,6 @@
   </div>
 </footer>
 
+<script src="nav.js"></script>
 </body>
 </html>

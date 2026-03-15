@@ -1,56 +1,94 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Contact PlotTwyst</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Plottwyst</title>
+  <meta name="description" content="Get in touch with the Plottwyst team — feedback, bug reports, partnerships.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <nav>
-
-<div class="logo">🕵️ PlotTwyst</div>
-
-<div class="menu">
-
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="how-to-play.html">How to Play</a>
-<a href="contact.html">Contact</a>
-
-</div>
-
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Plottwyst logo" class="logo-img">
+    <span>Plottwyst</span>
+  </a>
+  <button class="hamburger" id="hamburger" aria-expanded="false" aria-label="Toggle menu">☰</button>
+  <div class="menu" id="nav-menu">
+    <a href="how-to-play.html">How to Play</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="/invite?source=nav" class="btn-nav" target="_blank" rel="noopener">Add to Discord</a>
+  </div>
 </nav>
 
 
 <section class="page">
+  <h1>Contact</h1>
 
-<h1>Contact</h1>
+  <p>
+    Plottwyst is in open beta. Your feedback directly shapes what gets built next — bug reports, confusing clues, broken mechanics, ideas — all of it is valuable.
+  </p>
 
-<p>
-For feedback, questions, or partnerships reach out:
-</p>
 
-<p>
-📧 contact@plottwyst.app
-</p>
+  <h2>Get in Touch</h2>
 
+  <p>📧 <a href="mailto:contact@plottwyst.app" style="color: #fca5a5;">contact@plottwyst.app</a></p>
+
+  <p>
+    For the fastest response on bugs or gameplay issues, email works best. Include the game channel, what happened, and roughly when — that helps track it down quickly.
+  </p>
+
+
+  <h2>What to Report</h2>
+
+  <ul>
+    <li>A clue that doesn't make sense or contradicts the solution</li>
+    <li>A suspect profile that feels inconsistent</li>
+    <li>A bot command that didn't respond or behaved unexpectedly</li>
+    <li>The Plottwyst misdirection that felt too obvious or too impossible</li>
+    <li>Anything that broke the immersion or confused your team</li>
+  </ul>
+
+  <div class="tip">
+    💡 You can also rate each case directly after the game using the feedback buttons — that feedback goes straight into the system and helps improve future cases automatically.
+  </div>
+
+
+  <h2>Partnerships & Press</h2>
+
+  <p>
+    Interested in featuring Plottwyst, partnering, or early access for a large community? Reach out at <a href="mailto:contact@plottwyst.app" style="color: #fca5a5;">contact@plottwyst.app</a> with the subject line <strong>Partnership</strong>.
+  </p>
+
+
+  <div class="cta-inline">
+    <p>Haven't tried Plottwyst yet?</p>
+    <a href="/invite?source=contact" class="btn-primary" target="_blank" rel="noopener">Add to Discord — It's Free</a>
+  </div>
 </section>
 
 
 <footer>
-
-<p>© 2026 PlotTwyst</p>
-
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="Plottwyst" class="logo-img">
+      <span>Plottwyst</span>
+    </div>
+    <div class="footer-links">
+      <a href="how-to-play.html">How to Play</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Plottwyst &nbsp;·&nbsp; Every case is a new story.</p>
+  </div>
 </footer>
 
+<script src="nav.js"></script>
 </body>
-
 </html>
